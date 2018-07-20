@@ -13,37 +13,26 @@ class App extends Component {
 
   componentDidMount() {
     fetch(
-      "https://jobs.github.com/positions.json?description=javascript&location=remote",
-      { mode: "no-cors" }
+      // "https://jobs.github.com/positions.json?description=javascript&location=remote&full_time=false"
+      "https://jsonplaceholder.typicode.com/photos"
     )
-      .then(res => res.json())
-      .then(
-        result => {
-          this.setState({ isLoaded: true, items: result.items });
-        }, // Handle errors here
-        error => {
-          this.setState({ isLoaded: true, error });
-        }
-      );
+      .then(response => response.json())
+      .then(items => this.setState({ isLoaded: true, items }));
   }
 
   render() {
-    const { error, isLoaded, items } = this.state;
-    if (error) {
-      return <div>Error: {error.message}</div>;
-    } else if (!isLoaded) {
-      return <div>Loading...</div>;
-    } else {
-      return (
-        <ul>
-          {items.map(item => (
-            <li key={item.id}>
-              {item.title} {item.location}
-            </li>
-          ))}
-        </ul>
-      );
-    }
+    const { items } = this.state;
+    // const { id, name, email } = this.state.items;
+    return (
+      <ul className="wrapper">
+        {items.map(item => (
+          <li key={item.id}>
+            {item.title}
+            <img src={item.url} />
+          </li>
+        ))}
+      </ul>
+    );
   }
 }
 export default App;
