@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
 
 class App extends Component {
   constructor(props) {
@@ -13,24 +12,22 @@ class App extends Component {
 
   componentDidMount() {
     fetch(
-      // "https://jobs.github.com/positions.json?description=javascript&location=remote&full_time=false"
-      "https://jsonplaceholder.typicode.com/photos"
+      "https://cors-anywhere.herokuapp.com/http://jobs.github.com/positions.json?description=react&location=ny&page=0"
     )
-      .then(response => response.json())
-      .then(items => this.setState({ isLoaded: true, items }));
+      .then(res => res.json())
+      .then(data => {
+        this.setState({ items: data });
+      });
   }
 
   render() {
-    const { items } = this.state;
-    // const { id, name, email } = this.state.items;
     return (
       <ul className="wrapper">
-        {items.map(item => (
-          <li key={item.id}>
-            {item.title}
-            <img src={item.url} />
-          </li>
-        ))}
+        {this.state.items
+          ? this.state.items.map((item, index) => (
+              <li key={index}>{item.company}</li>
+            ))
+          : ""}
       </ul>
     );
   }
