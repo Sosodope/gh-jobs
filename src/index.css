@@ -4,10 +4,17 @@ body {
   padding: 0;
   font-family: sans-serif;
   background: #d0d2dc40;
+  background: url("./paint.jpg");
+  background-position: center;
+  background-size: contain;
+}
+h1 {
+  color: white;
+  text-shadow: -2px 1px 6px black;
 }
 .listings-wrapper {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   grid-gap: 15px;
 }
 .listing {
@@ -16,22 +23,25 @@ body {
   padding: 10px 5px;
   display: grid;
   justify-items: center;
-  border: 1px dotted #5672b1;
+  /* border: 1px solid #5672b1; */
   transition: all 0.4s ease-in;
 }
 .listing:hover {
-  box-shadow: 10px 2px 8px grey;
+  box-shadow: 4px 4px 5px #333;
 }
 .listing img {
   width: 20%;
 }
 .listing-button,
-.nextpage-button {
+.nextpage-button,
+.search-button {
   border-radius: 3px;
   background: #4be4be;
   border: none;
   height: 30px;
+  cursor: pointer;
 }
+.search-button,
 .nextpage-button {
   color: white;
 }
@@ -60,4 +70,20 @@ body {
   to {
     transform: rotate(1turn);
   }
+}
+.search {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+.search-form {
+  display: flex;
+  justify-content: flex-end;
+}
+.search-form input {
+  width: 30%;
+  border: none;
+  background: none;
+  border-bottom: 2px solid black;
+  margin-right: 20px;
+  outline: none;
 }

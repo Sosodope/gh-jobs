@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Listings from "./components/Listings";
 import Loading from "./components/Loading";
+import Search from "./components/Search";
 
 class App extends Component {
   constructor(props) {
@@ -31,7 +32,15 @@ class App extends Component {
   componentDidMount() {
     this.getListings();
   }
-
+  handleChange = e => {
+    e.preventDefault();
+    const value = e.target.input.keyword;
+    this.setState({ searchTerm: value });
+  };
+  handleSubmit = e => {
+    e.preventDefault();
+    this.getListings();
+  };
   render() {
     return (
       <React.Fragment>
@@ -40,8 +49,12 @@ class App extends Component {
           <Loading />
         ) : (
           <div className="wrapper">
+            <Search
+              handleSearch={this.handleSubmit}
+              handleChange={this.handleChange}
+            />
             <Listings items={this.state.items} />
-            <div class="foot-wrapper">
+            <div className="foot-wrapper">
               <button onClick={this.goToNextPage} className="nextpage-button">
                 Next Page ➜
               </button>
