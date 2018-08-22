@@ -45,6 +45,9 @@ h1 {
 .nextpage-button {
   color: white;
 }
+.search-button {
+  font-size: 14px;
+}
 .listing-button a {
   text-decoration: none;
   color: white;
