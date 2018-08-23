@@ -8,6 +8,7 @@ const Listings = props => {
           <div className="listing">
             <img src={item.company_logo} alt={item.company} />
             <h4 key={index}>{item.company}</h4>
+            <h5>{item.title}</h5>
             <p>Location: {item.location}</p>
             <p>Type: {item.type}</p>
             <button className="listing-button">
