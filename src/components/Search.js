@@ -3,11 +3,9 @@ import React from "react";
 const Search = props => {
   return (
     <div className="search">
-      <form className="search-form" onSubmit={props.handleSubmit}>
-        <input type="text" name="jobKeyword" placeholder="keyword" />
-        <button className="search-button" onClick={props.handleSubmit}>
-          Search
-        </button>
+      <form className="search-form" onSubmit={props.getSearch}>
+        <input type="text" name="searchTerm" placeholder="keyword" />
+        <button className="search-button">Search</button>
       </form>
     </div>
   );
